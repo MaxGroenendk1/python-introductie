@@ -138,9 +138,19 @@
 # deel 5 flowchart met lijst bestellen
 print("Welcome to Mac Donald's")
 
+# here_there = input ("Would you like to eat here or take away? [Eat here/Take away]")
+# burgers_drinks = input("Burger or a drink? [Burger/Drink]")
+# warm_cold = input("Warm or cold drink? [Warm/Cold]")
+# burgerchoice = input("Burger choice: [Hamburger, Cheese burger, Big Mac, Quarter Pounder]:")
+# add_cheese = input("Would you like to add cheese? [Yes/No]:")
+# warm_drink_choice = input("Warm drink: [Coffee, Cappucino, Hot Chocolate]:")
+# cold_drink_choice = input("Cold drink: [Coco Cola, Cola Zero, 7-Up, Fanta, Fristi]:")
+
+# here_there
 here_there = input ("Would you like to eat here or take away? [Eat here/Take away]")
 if(here_there.lower() == "eat here"):
     here_there = True
+    
     
 elif(here_there.lower() == "take away"):
     here_there = False
@@ -149,25 +159,33 @@ else:
     print("Abort, unknown input.")
     exit(1)
 
+# burgers_drinks
 burgers_drinks = input("Burger or a drink? [Burger/Drink]")
 if(burgers_drinks.lower() == "burger"):
     burgers_drinks = True
+    if(burgers_drinks):
+        burgerchoice = input("Burger choice: [Hamburger, Cheese burger, Big Mac, Quarter Pounder]:")
+        
+        add_cheese = input("Would you like to add cheese? [Yes/No]:")
     
 elif(burgers_drinks.lower() == "drink"):
     burgers_drinks = False
-else:
-    print("Abort, unknown input.")
-    exit(1)
-    
-warm_cold = input(" Drink warm or cold? [Warm/Cold]")
-if(warm_cold.lower() == "warm"):
-    warm_cold = True
-    warm_drink_choice = input("Warm drink: [Coffee, Cappucino, Hot Chocolate]:")
-    print(warm_drink_choice).upper()
-elif(warm_cold.lower() == "cold"):
-    warm_cold = False
-    cold_drink_choice = input("Cold drink: [Coco Cola, Cola Zero, 7-Up, Fanta, Fristi]:")
-    print(cold_drink_choice).upper()
+    if(burgers_drinks == False):
+        warm_cold = input("Warm or cold drink? [Warm/Cold]")
+        if(warm_cold.lower() == "warm"):
+            warm_cold = True
+            if(warm_cold):
+                warm_drink_choice = input("Warm drink: [Coffee, Cappucino, Hot Chocolate]:")
+        
+        elif(warm_cold.lower() == "cold"):
+            warm_cold = False
+            if(warm_cold == False):
+                cold_drink_choice = input("Cold drink: [Coco Cola, Cola Zero, 7-Up, Fanta, Fristi]:")
+        
+        else:
+            print("Abort, unknown input.")
+            exit(1)
+            
 else:
     print("Abort, unknown input.")
     exit(1)
