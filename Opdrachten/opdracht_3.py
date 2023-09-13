@@ -138,12 +138,13 @@
 # deel 5 flowchart met lijst bestellen
 
 def capitalize_list(list):
-    '''Capitalizes all strings in a list'''
+    '''Capitalizes all strings in a list, 
+    returns the list and then joins it with python build in function,
+    'join' then lastly returns the text'''
     for i in range(len(list)):
         list[i] = list[i].capitalize()
     text = " ".join(list)
     return text
-''' '''
 
     
 burger_choice = "Hamburger, Cheese burger, Big Mac, Quarter Pounder"
@@ -154,17 +155,23 @@ cold_drink_choice = "Coco Cola, Cola Zero, 7-Up, Fanta, Fristi"
 print("Welcome to Mac Donald's")
 
 # here_there
-here_there = input ("Would you like to eat here or take away? [Eat here/Take away]")
+here_there = input ("Would you like to consume here or take away? [Eat here/Take away]")
+
 if(here_there.lower() == "eat here"):
-    here_there = True
-    
-    
+        here_there = True
 elif(here_there.lower() == "take away"):
-    here_there = False
-    
+        here_there = False
 else:
-    print("Abort, unknown input.")
-    exit(1)
+        print("Abort, unknown input.")
+        exit(1)
+        
+def wish():
+    wish_text = ""
+    if(here_there):
+        return wish_text + "Thank you for your order, enjoy your meal in our restaurant!"
+
+    else:
+        return wish_text + "Thank you for your order, good travel and enjoy your order!"
 
 # burgers_drinks
 burgers_drinks = input("Burger or a drink? [Burger/Drink]")
@@ -173,10 +180,11 @@ if(burgers_drinks.lower() == "burger"):
     if(burgers_drinks):
         burgerchoice = input("Burger choice: [Hamburger, Cheese burger, Big Mac, Quarter Pounder]:")
         print(capitalize_list(burgerchoice.split(" ")))
-        print(burger_choice.split(", "))
+        # print(burger_choice.split(", "))
         if(capitalize_list(burgerchoice.split(" ")) in burger_choice.split(", ")):
-            print(burgerchoice.split(" ").capitalize())
-            if(burgerchoice == "Quarter Pounder"):
+            # print(burgerchoice.capitalize())
+            # print(capitalize_list(burgerchoice.split(" ")))
+            if(capitalize_list(burgerchoice.split(" ")) == "Quarter Pounder"):
                 add_cheese = input("Would you like to add cheese? [Yes/No]:")
                 if(add_cheese.lower() == "yes"):
                     add_cheese = True
@@ -186,6 +194,7 @@ if(burgers_drinks.lower() == "burger"):
                     add_cheese = False
                     if(add_cheese == False):
                         print("No cheese added to Quarter Pounder.")
+        print(wish())
     
 elif(burgers_drinks.lower() == "drink"):
     burgers_drinks = False
@@ -195,16 +204,19 @@ elif(burgers_drinks.lower() == "drink"):
             warm_cold = True
             if(warm_cold):
                 warmdrinkchoice = input("Warm drink: [Coffee, Cappucino, Hot Chocolate]:")
-                if(warmdrinkchoice.split(" ").capitalize() in warm_drink_choice):
-                    print(warmdrinkchoice.capitalize())
+                if(capitalize_list(warmdrinkchoice.split(" ")) in warm_drink_choice):
+                    # print(warmdrinkchoice.capitalize())
+                    print(capitalize_list(warmdrinkchoice.split(" ")))
+                    print(wish())
                 else:
                     print("Abort, unknown input.")
         elif(warm_cold.lower() == "cold"):
             warm_cold = False
             if(warm_cold == False):
                 colddrinkchoice = input("Cold drink: [Coco Cola, Cola Zero, 7-Up, Fanta, Fristi]:")
-                if colddrinkchoice.split(" ").capitalize() in cold_drink_choice:
-                    print(colddrinkchoice.capitalize())
+                if capitalize_list(colddrinkchoice.split(" ")) in cold_drink_choice:
+                    print(capitalize_list(colddrinkchoice.split(" ")))
+                    print(wish())
             else:
                 print("Abort, unknown input.")
         
