@@ -11,6 +11,7 @@ except ImportError as e:
         "Please install the faker and black modules first with the following commands:"
     )
     print("pip install faker black")
+    print(e)
     exit(1)
 
 
