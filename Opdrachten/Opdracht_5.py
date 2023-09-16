@@ -11,7 +11,6 @@
 #         print (i)
 
 #deel 2
-numbers = list(range(1,100))
 #getallen N, Z, Q, R
 # N = natuurlijke getallen: Alle positieve gehele getallen en het getal nul
 # Z = gehele getallen: Alle getallen, onder en boven en gelijk aan 0, zonder decimalen achter de komma
@@ -38,6 +37,7 @@ def is_prime(n):
         return False
     return True
 
+numbers = list(range(1,100))
 for i in numbers:
     if (is_prime(i) == True):
         print(f'{i} is a prime number')
@@ -100,9 +100,13 @@ for i in numbers:
 print("To stop the program press '.'")
 user_input = ""
 while (user_input != "."):
-    user_input = input("Please enter a number up until 100, press '.' to stop the program: ")
+    user_input = input("Please enter a number to check if it is a prime, to stop the program press '.': ")
     if(user_input == "."):
         print("program has stopped")
         exit(1)
     else:
-        print(is_prime(user_input))
+        awnser = is_prime(int(user_input))
+        if (awnser == True):
+            print(f'{user_input} is a prime number')
+        else:
+            print(f'{user_input} is not a prime number')
