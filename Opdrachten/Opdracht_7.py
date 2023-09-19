@@ -29,34 +29,48 @@
 #     print(divide(x, y))
 from students_classrooms import students_per_classroom # zo importeer je de dataset
 
-def get_excellent_students(list_of_students):
+def class_names(list_of_classes):
+    class_codes = []
+    for class_code in list_of_classes:
+        class_codes.append(class_code)
+    return class_codes
+
+class_codes = class_names(students_per_classroom)
+
+def get_excellent_students(list_of_students, class_code):
     #als hij meer dan één uitmuntend heeft of als alle resultaten beter dan "voldoende" zijn.
     uitstekende_studenten = []
-    for i in range (0,len(list_of_students)):
-        student = list_of_students[i]
-        aantal_goed = 0 
-        aantal_uitmuntend = 0 #hoevaak voldoende
-        for vak in student['resultaten']: # ittereert over de dict van key resultaten
-            resultaat = student['resultaten'][vak]
-            print(resultaat)
-            if(resultaat == "goed"):
-                aantal_goed += 1
-            if(resultaat == "uitmuntend"):
-                aantal_uitmuntend += 1
-                
-        if(aantal_uitmuntend >= 2 or aantal_goed == 4):
-            uitstekende_studenten.append(student)
-    return uitstekende_studenten
-print(len(get_excellent_students(students_per_classroom["SWDVT-1A"])))
-                
-                
+    for studenten in list_of_students[class_code]: # per student
+            aantal_goed = 0 
+            aantal_uitmuntend = 0 #hoevaak voldoende
+            aantal_overig = 0
+            for vak in studenten['resultaten']: # ittereert over de dict van key resultaten
+                resultaat = studenten['resultaten'][vak]
+                print(resultaat)
+                if(resultaat == "goed"):
+                    aantal_goed += 1
+                if(resultaat == "uitmuntend"):
+                    aantal_uitmuntend += 1
+                    
+            if(aantal_uitmuntend >= 2 or aantal_goed == 4):
+                uitstekende_studenten.append(studenten)
+            else:
+                aantal_overig += 1
     
-# def get_most_excellent_classroom(list_of_classrooms):
-#     #Welke klas(sen) hebben het hoogste percentage "excellent" studenten?
-#     len(students)#aantal studenten per klas
-#     x = 0
-#     while (x <= len(students)):#aantal studenten excellent.
-#         x = x + 1
+    return uitstekende_studenten
+print(len(get_excellent_students(students_per_classroom, class_codes[0])))
+excellent_students = get_excellent_students(students_per_classroom)
+                
+def get_most_excellent_classroom(list_of_classrooms):
+    #Welke klas(sen) hebben het hoogste percentage "excellent" studenten?
+    # eerst door alle klassen heen gaan
+    class_codes = []
+    for class_code in list_of_classrooms:
+        class_codes.append(class_code)
+    for code in class_codes:
+        print(get_excellent_students(students_per_classroom, code))        
+    
+    
 
 # def get_best_scoring_classroom(list_of_classrooms):
 #     #Welke klas heeft gemiddeld genomen over alle vakken de hoogste scores? Dit is een lastige. Stel voor het gemak dat een onvoldoende = 0 punten, voldoende 2 punten, goed 3 punten en uitstekend 4 punten.
